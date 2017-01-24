@@ -13,7 +13,7 @@ var Stack = function() {
 
   someInstance.pop = function() {
     var deleted = this[count];
-    //delete this.count;
+    delete this.count;
     count--;
     console.log(deleted)
     return deleted; 
