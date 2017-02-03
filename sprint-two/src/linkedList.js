@@ -31,10 +31,10 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    //console.log(this.head, ' remove head this');
-    
-
-    
+    // console.log(this.head, ' remove head this');
+    var deleted = this.head.value;
+    this.head = this.head.prev;
+    return deleted
   };
 
   list.contains = function(target) {
