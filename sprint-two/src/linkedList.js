@@ -17,17 +17,23 @@ var LinkedList = function() {
       this.tail = new Node(value);
       this.head.prev = this.tail;
       this.tail.next = this.head;
-      console.log(this)
+      // console.log(this)
       return
     }
 
-    this.tail = new Node(value);
+    let newNode = new Node(value);
+    let oldNodeTail = this.tail;
+
+    this.tail.prev = newNode;
+    // this.tail.next = null; <------
+    
+    this.tail = newNode;
+    this.tail.next = oldNodeTail;
     this.tail.prev = null;
-    this.next = hmm;
    
     //this.tail.next.prev = new Node(value);
 
-    console.log(this)
+    //console.log(this)
   };
 
   list.removeHead = function() {
@@ -38,8 +44,35 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    // let valueToCheck = this.tail.value;
+    var mainObject = this.tail
+    var targetStatus = false;
+
+    var recurse = ( currentValue ) => {
+      console.log( currentValue.value, ' main object at the beginning of the recursion')
+      //console.log(currentValue.tail.value, target, ' currentValue and target')
+      // console.log(currentValue.value === target, '*************')
+      
+      if ( currentValue.value === target ) {
+        // targetStatus = true;
+        console.log('scaaaaaaar')
+
+        return true;
+      }  
+
+
+      if ( currentValue.value !== target ) {
+        // console.log( currentValue.next, ' current value next' )
+        currentValue = currentValue.next;
+        recurse( currentValue )
+      }
+      // return targetStatus
+    }
+    recurse( mainObject );
+    return targetStatus;
   };
 
+  //end
   return list;
 };
 
