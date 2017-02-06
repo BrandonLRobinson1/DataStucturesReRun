@@ -28,6 +28,7 @@ var LinkedList = function() {
     // this.tail.next = null; <------
     
     this.tail = newNode;
+    this.tail.value = value;
     this.tail.next = oldNodeTail;
     this.tail.prev = null;
    
@@ -38,38 +39,47 @@ var LinkedList = function() {
 
   list.removeHead = function() {
     // console.log(this.head, ' remove head this');
-    var deleted = this.head.value;
-    this.head = this.head.prev;
-    return deleted
+    // var deleted = this.head.value;
+    // this.head = this.head.prev;
+    // return deleted
+    var value = this.head.value;
+    console.log('og value ->', value)
+    var head = this.head;
+    if (head.prev === null) {
+      var newHead = head;
+    } else {
+      var newHead = head.prev; 
+    }
+    console.log(newHead, ' nh')
+    newHead.next = null;
+    this.head = newHead;
+    return head.value;
   };
 
   list.contains = function(target) {
-    // let valueToCheck = this.tail.value;
-    var mainObject = this.tail
-    var targetStatus = false;
+    // debugger
+    var tail = this.tail;
+    var status = false;
 
-    var recurse = ( currentValue ) => {
-      console.log( currentValue.value, ' main object at the beginning of the recursion')
-      //console.log(currentValue.tail.value, target, ' currentValue and target')
-      // console.log(currentValue.value === target, '*************')
-      
-      if ( currentValue.value === target ) {
-        // targetStatus = true;
-        console.log('scaaaaaaar')
-
-        return true;
-      }  
-
-
-      if ( currentValue.value !== target ) {
-        // console.log( currentValue.next, ' current value next' )
-        currentValue = currentValue.next;
-        recurse( currentValue )
-      }
-      // return targetStatus
+    var recurse = ( )=>{
+    
+    if (tail.value === target) {
+      console.log('green', tail.value, "===", target);
+      status = true
+      return
+    } else if (tail.next === null) {
+      status = false;
+      return
+    } else {
+      tail = tail.next;
+      console.log('yello', tail);
+      recurse()
     }
-    recurse( mainObject );
-    return targetStatus;
+      
+    }
+    recurse()
+    return status
+
   };
 
   //end
