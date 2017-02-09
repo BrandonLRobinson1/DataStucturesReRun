@@ -15,20 +15,24 @@ var LimitedArray = function(limit) {
   var storage = [];
 
   var limitedArray = {};
+  // takes index, verifys it, then grabs that index in the array
   limitedArray.get = function(index) {
     checkLimit(index);
     return storage[index];
   };
+  //take index and value at which to set it, checks the index, and sets it at that index with that value
   limitedArray.set = function(index, value) {
     checkLimit(index);
     storage[index] = value;
   };
+  //loops through the storage, runs function on items, index, and  collection
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
       callback(storage[i], i, storage);
     }
   };
 
+  // checks to make sure index is a number, and checks to make sure index isnt above the limit, then returns array?
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
