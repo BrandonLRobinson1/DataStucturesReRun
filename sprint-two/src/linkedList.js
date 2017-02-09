@@ -38,19 +38,14 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    // console.log(this.head, ' remove head this');
-    // var deleted = this.head.value;
-    // this.head = this.head.prev;
-    // return deleted
-    var value = this.head.value;
-    console.log('og value ->', value)
+    // setting the head
     var head = this.head;
+    // if the head is also the tail = newhead is oldhead, otherwise newhead is whatever is before it
     if (head.prev === null) {
       var newHead = head;
     } else {
       var newHead = head.prev; 
     }
-    console.log(newHead, ' nh')
     newHead.next = null;
     this.head = newHead;
     return head.value;
