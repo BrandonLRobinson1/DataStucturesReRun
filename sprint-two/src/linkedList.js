@@ -59,7 +59,7 @@ var LinkedList = function() {
     var recurse = ( )=>{
     
     if (tail.value === target) {
-      console.log('green', tail.value, "===", target);
+      // console.log('green', tail.value, "===", target);
       status = true
       return
     } else if (tail.next === null) {
@@ -67,7 +67,7 @@ var LinkedList = function() {
       return
     } else {
       tail = tail.next;
-      console.log('yello', tail);
+      // console.log('yello', tail);
       recurse()
     }
       
