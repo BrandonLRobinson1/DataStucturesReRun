@@ -1,4 +1,3 @@
-
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
@@ -17,8 +16,8 @@ HashTable.prototype.insert = function(k, v) {
   //console.log(bucket, ' bucket')
 
   bucket.forEach( (tuple, i, theBucket) => {
-    console.log( tuple, i, theBucket, k,' tuple, i, theBucket, k')
-    console.log( tuple[0], ' tuple[0]')
+    //console.log( tuple, i, theBucket, k,' tuple, i, theBucket, k')
+    //console.log( tuple[0], ' tuple[0]')
     if ( tuple[0] === k ) {
       theBucket[i] = [k,v];
     }
@@ -34,7 +33,19 @@ HashTable.prototype.insert = function(k, v) {
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.get( index )
+  //console.log( this._storage.get( index ), ' getting index' ); 
+  var result;
+  var bucket = this._storage.get( index );
+
+  bucket.forEach( (item, index, collection) => {
+    console.log(item, k, ' item and key')
+    if ( item[0] === k ) {
+      result = item[1];
+    }
+  } )
+
+  return result
+
 };
 
 HashTable.prototype.remove = function(k) {
@@ -53,9 +64,6 @@ HashTable.prototype.remove = function(k) {
 
 };
 
-hashyyy = new HashTable();
-hashyyy.insert('Shteven', 'Seagul');
-hashyyy.retrieve('Shteven')
 
 
 
@@ -67,5 +75,3 @@ hashyyy.retrieve('Shteven')
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-

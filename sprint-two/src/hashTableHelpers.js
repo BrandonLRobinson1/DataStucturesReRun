@@ -20,14 +20,12 @@ var LimitedArray = function(limit) {
   // takes index, verifys it, then grabs that index in the array
   limitedArray.get = function(index) {
     checkLimit(index);
-    console.log('getting ', storage[index])
     return storage[index];
   };
   //take index and value at which to set it, checks the index, and sets it at that index with that value
   limitedArray.set = function(index, value) {
     checkLimit(index);
     storage[index] = value;
-    console.log(storage, value)
   };
   //loops through the storage, runs function on items, index, and  collection
   limitedArray.each = function(callback) {
