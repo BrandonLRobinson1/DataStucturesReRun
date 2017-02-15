@@ -27,7 +27,7 @@ var LimitedArray = function(limit) {
   limitedArray.set = function(index, value) {
     checkLimit(index);
     storage[index] = value;
-    console.log('hiya ', value)
+    console.log(storage, value)
   };
   //loops through the storage, runs function on items, index, and  collection
   limitedArray.each = function(callback) {
