@@ -44,7 +44,7 @@ Graph.prototype.removeNode = function(node) {
       console.log(this.storage[node].value, ' node before removal')
       console.log(this.storage, this.storage[node])
       delete this.storage[node];
-      console.log(this.storage[node].value, ' node after removal')
+      console.log(this.storage[node].value, ' node after removal') 
     }
   
   }  
