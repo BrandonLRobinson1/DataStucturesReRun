@@ -43,8 +43,15 @@ Graph.prototype.removeNode = function(node) {
     if (this.storage[node].value === node) {
       // console.log('mmyes')
       // console.log(this.storage[node], ' node before removal')
-      delete this.storage[node];
-      // console.log(this.storage[node], ' node after removal')
+      var removeMe = this.storage[node].edge1;
+      if ( removeMe !== null ) { 
+        this.storage[removeMe.toString()].edge1 = null;
+      }
+      //this.storage[node].edge1 = null;
+      //console.log(removeMe,' removeMe', this.storage[removeMe], ' this.storage[removeMe]')
+      //console.log(this.storage, node, this.storage[node.toString()], ' this.storage, node, this.storage[node.toString()] delete NODE')
+      delete this.storage[node.toString()];
+      //console.log(this.storage[node], node,  ' node after removal')
     }
   
   }  
@@ -57,10 +64,10 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   for(var key in this.storage){
     //console.log(key, this.storage, this.storage[key], fromNode.toString(), ' key, this.storage, this.storage[key], fromNode.toString()')
       if ( key === fromNode.toString() ) {
-        console.log(this.storage[key], key, this.storage.edge1,  ' figuree it oaawt this.storage, key, this.storage.edge1')
+        //console.log(this.storage[key], key, this.storage.edge1,  ' figuree it oaawt this.storage, key, this.storage.edge1')
         if ( this.storage[key].edge1 === toNode ) {
-          console.log('cookie')
-          console.log(this.storage, fromNode, toNode, ' this.storage, fromNode, toNode')
+          //console.log('cookie')
+          //console.log(this.storage, fromNode, toNode, ' this.storage, fromNode, toNode')
           return true
         } else {
           return false
@@ -104,10 +111,11 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
     if (Number(key) === fromNode) {
       //console.log('trueys ', key)
-      this.storage.edge1 = null;
+      this.storage[fromNode].edge1 = null;
       this.storage[toNode].edge1 = null;
       //console.log(this.storage, ' this.storage')
-      //console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
+      console.log(this.storage[fromNode].edge1, this.storage[toNode].edge1, this.storage, ' this.storage[fromNode].edge1, this.storage[toNode].edge1, this.storage');
+      console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
   }
 
 }
