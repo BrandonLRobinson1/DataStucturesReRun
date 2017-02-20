@@ -39,52 +39,58 @@ Graph.prototype.contains = function(node) {
 Graph.prototype.removeNode = function(node) {
 
   for ( var key in this.storage ) {
-    console.log(this.storage[node].value, node, ' this.storage[node], node')
+    // console.log(this.storage[node].value, node, ' this.storage[node], node')
     if (this.storage[node].value === node) {
       // console.log('mmyes')
-      console.log(this.storage[node], ' node before removal')
+      // console.log(this.storage[node], ' node before removal')
       delete this.storage[node];
-      console.log(this.storage[node], ' node after removal')
+      // console.log(this.storage[node], ' node after removal')
     }
   
   }  
-
-  // for (var key in this.storage) {
-  //   if (this.storage[node] === node) {
-  //     delete this.storage[node];
-  //   }
-  // }
 
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
 
-  // for(var key in this){
+  for(var key in this.storage){
+    //console.log(key, this.storage, this.storage[key], fromNode.toString(), ' key, this.storage, this.storage[key], fromNode.toString()')
+      if ( key === fromNode.toString() ) {
+        //console.log(this.storage, key, ' figuree it oaawt')
+        if ( this.storage.edge1 === toNode ){
+          console.log('cookie')
+          return true
+        } else {
+          return false
+        }
+      } 
+    
 
-  //   if (this[key] === fromNode) {
-  //     if (this[key].edge1 === toNode || this[key].edge2 === toNode) {
-  //       return true
-  //     } else {
-  //       return false
-  //     }
-  //   }
+    // if (this.storage[key] === fromNode.toString()) {
+    //   if (this[key].edge1 === toNode || this[key].edge2 === toNode) {
+    //     return true
+    //   } else {
+    //     return false
+    //   }
+    // }
 
-  // }
+  }
 
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
 
-  // for(var key in this){
-    
-  //   if (this[key] === fromNode) {
-  //     this[key].edge1 = toNode;
-  //     console.log(this)
-  // }
+  for(var key in this.storage){
 
-// }
+    if (Number(key) === fromNode) {
+      //console.log('trueys ', key)
+      this.storage.edge1 = toNode;  
+      //console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
+  }
+
+}
 
 };
 
