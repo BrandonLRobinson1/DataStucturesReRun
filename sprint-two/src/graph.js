@@ -24,7 +24,8 @@ Graph.prototype.contains = function(node) {
 
   for ( var key in this ){
   //console.log(key, node, this.storage[node].value,  ' this line 26')
-    if (this.storage[node].value === node) {
+  // console.log(key[node.toString()], node, key[node.toString()] === node, this.storage[node].value)
+    if (this.storage[node]) {
       return true;
     } else {
       return false;
@@ -37,17 +38,22 @@ Graph.prototype.contains = function(node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
 
-  for ( var key in this ) {
-    console.log(this.storage[node].value, node)
+  for ( var key in this.storage ) {
+    console.log(this.storage[node].value, node, ' this.storage[node], node')
     if (this.storage[node].value === node) {
-      console.log('mmyes')
-      console.log(this.storage[node].value, ' node before removal')
-      console.log(this.storage, this.storage[node])
+      // console.log('mmyes')
+      console.log(this.storage[node], ' node before removal')
       delete this.storage[node];
-      console.log(this.storage[node].value, ' node after removal')
+      console.log(this.storage[node], ' node after removal')
     }
   
   }  
+
+  // for (var key in this.storage) {
+  //   if (this.storage[node] === node) {
+  //     delete this.storage[node];
+  //   }
+  // }
 
 };
 
