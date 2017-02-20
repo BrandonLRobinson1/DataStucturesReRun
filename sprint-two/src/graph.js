@@ -57,9 +57,10 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   for(var key in this.storage){
     //console.log(key, this.storage, this.storage[key], fromNode.toString(), ' key, this.storage, this.storage[key], fromNode.toString()')
       if ( key === fromNode.toString() ) {
-        //console.log(this.storage, key, ' figuree it oaawt')
-        if ( this.storage.edge1 === toNode ){
+        console.log(this.storage[key], key, this.storage.edge1,  ' figuree it oaawt this.storage, key, this.storage.edge1')
+        if ( this.storage[key].edge1 === toNode ) {
           console.log('cookie')
+          console.log(this.storage, fromNode, toNode, ' this.storage, fromNode, toNode')
           return true
         } else {
           return false
@@ -86,7 +87,9 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
     if (Number(key) === fromNode) {
       //console.log('trueys ', key)
-      this.storage.edge1 = toNode;  
+      this.storage[key].edge1 = toNode;
+      this.storage[toNode].edge1 = fromNode;
+      //console.log(this.storage, ' this.storage')
       //console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
   }
 
@@ -96,6 +99,19 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+
+  for(var key in this.storage){
+
+    if (Number(key) === fromNode) {
+      //console.log('trueys ', key)
+      this.storage.edge1 = null;
+      this.storage[toNode].edge1 = null;
+      //console.log(this.storage, ' this.storage')
+      //console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
+  }
+
+}
+
 };
 
 // Pass in a callback which will be executed on each node of the graph.
