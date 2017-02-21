@@ -114,8 +114,8 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
       this.storage[fromNode].edge1 = null;
       this.storage[toNode].edge1 = null;
       //console.log(this.storage, ' this.storage')
-      console.log(this.storage[fromNode].edge1, this.storage[toNode].edge1, this.storage, ' this.storage[fromNode].edge1, this.storage[toNode].edge1, this.storage');
-      console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
+      //console.log(this.storage[fromNode].edge1, this.storage[toNode].edge1, this.storage, ' this.storage[fromNode].edge1, this.storage[toNode].edge1, this.storage');
+      //console.log(this.storage, ' adding edgekey should be:', fromNode,  ' edge1 should be:' + toNode )
   }
 
 }
@@ -124,6 +124,11 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  for ( var key in this.storage ) {
+    //console.log(key, ' key bitches')
+    //console.log(this.storage[key], ' remix pt 2')
+    cb( this.storage[key] );
+  }
 };
 
 /*
