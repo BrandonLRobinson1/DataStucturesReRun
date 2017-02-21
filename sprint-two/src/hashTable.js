@@ -42,7 +42,7 @@ HashTable.prototype.retrieve = function(k) {
 
   //loop through buckets which is an array of arrays
   bucket.forEach( (item, index, collection) => {
-    console.log(item, k, ' item and key')
+    //console.log(item, k, ' item and key')
     //tuplet matches key, return the value
     if ( item[0] === k ) {
       result = item[1];
